@@ -25,6 +25,11 @@ namespace Eventos.Models
         public string telefono { get; set; }
         public string imagen { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        public List<Comentario> Comentarios { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public List<Inscripcion> Inscripciones { get; set; }
 
     }
 }

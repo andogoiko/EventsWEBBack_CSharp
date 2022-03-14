@@ -47,6 +47,12 @@ namespace Eventos.Models
         [System.Text.Json.Serialization.JsonIgnore]
         public Localizacion Localizacion { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        public List<Comentario> Comentarios { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public List<Inscripcion> Inscripciones { get; set; }
+
 
 
     }
