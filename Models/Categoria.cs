@@ -5,16 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eventos.Models
+namespace proyectoFinal.Models
 {
     public class Categoria
     {
-        
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string categoriaId {get;set;}
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int categoria_id { get; set; }
+        public string categoria { get; set; }
         [Required]
-        public string descripcionCategoria { get; set; }
+        public string descripcion_categoria { get; set; }
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Evento> Eventos { get; set; }
+        public List<Evento> eventos { get; set; }
     }
 }

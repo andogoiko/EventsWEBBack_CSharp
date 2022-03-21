@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using proyectoFinal.Data;
 
 namespace proyectoFinal
 {
@@ -32,6 +33,8 @@ namespace proyectoFinal
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "proyectoFinal", Version = "v1" });
             });
+
+            services.AddDbContext<projectContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

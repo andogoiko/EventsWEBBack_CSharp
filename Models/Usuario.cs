@@ -5,14 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eventos.Models
+namespace proyectoFinal.Models
 {
     public class Usuario
     {
         //CAMPOS
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string usuarioId { get; set; }
+        public string usuario_id { get; set; }
         [Required]
         public string password { get; set; }
         [Required]
@@ -26,10 +27,10 @@ namespace Eventos.Models
         public string imagen { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Comentario> Comentarios { get; set; }
+        public List<Comentario> comentarios { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Inscripcion> Inscripciones { get; set; }
+        public List<Inscripcion> inscripciones { get; set; }
 
     }
 }

@@ -6,30 +6,33 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eventos.Models
+namespace proyectoFinal.Models
 {
     public class Evento
     {
         //CAMPOS
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string eventoId { get; set; }
+        public string evento_id { get; set; }
 
-        [Required]
-        public string fechaInic { get; set; }
-
-        [Required]
-        public string fechaFin { get; set; }
+        public string evento { get; set; }
 
         [Required]
-        public string horaInic { get; set; }
+        public string fecha_inic { get; set; }
 
         [Required]
-        public string horaFin { get; set; }
+        public string fecha_fin { get; set; }
+
+        [Required]
+        public string hora_inic { get; set; }
+
+        [Required]
+        public string hora_fin { get; set; }
 
         [Required]
         [ForeignKey("Localizacion")]
-        public string localizacion { get; set; }
+        public string localizacion_id { get; set; }
 
         public string descripcion { get; set; }
 
@@ -38,20 +41,20 @@ namespace Eventos.Models
 
         [Required]
         [ForeignKey("Categoria")]
-        public string categoriaId { get; set; }
+        public string categoria_id { get; set; }
 
         //PROPIEDADES DE NAVEGACION
         [System.Text.Json.Serialization.JsonIgnore]
-        public Categoria Categoria { get; set; }
+        public Categoria categoria { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public Localizacion Localizacion { get; set; }
+        public Localizacion localizacion { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Comentario> Comentarios { get; set; }
+        public List<Comentario> comentarios { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Inscripcion> Inscripciones { get; set; }
+        public List<Inscripcion> inscripciones { get; set; }
 
 
 

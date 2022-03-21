@@ -5,28 +5,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eventos.Models
+namespace proyectoFinal.Models
 {
     public class Inscripcion
     {
         //CAMPOS
         [Key]
-        public int InscripcionId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int inscripcion_id { get; set; }
         [Required]
         [ForeignKey("Usuario")]
-        public string usuarioId { get; set; }
+        public string usuario_id { get; set; }
         [Required]
         [ForeignKey("Evento")]
-        public string eventoId { get; set; }
+        public string evento_id { get; set; }
 
         public int valoracion { get; set; }
 
         //PROPIEDADES DE NAVEGACIÓN
         [System.Text.Json.Serialization.JsonIgnore]
-        public Usuario Usuario { get; set; }
+        public Usuario usuario { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public Evento Evento { get; set; }
+        public Evento evento { get; set; }
     }
 }
 

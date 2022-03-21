@@ -6,14 +6,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eventos.Models
+namespace proyectoFinal.Models
 {
     public class Localizacion
     {
         //CAMPOS
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string localizacionId { get; set; }
+        public int localizacion_id { get; set; }
+
+        [Required]
+        public string localizacion { get; set; }
 
         [Required]
         public double latitud { get; set; }
@@ -22,7 +26,7 @@ namespace Eventos.Models
         public double longitud { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public List<Evento> Eventos { get; set; }
+        public List<Evento> eventos { get; set; }
 
 
     }
