@@ -30,7 +30,7 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Evento/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Evento>> GetEvento(string id)
+        public async Task<ActionResult<Evento>> GetEvento(int id)
         {
             var evento = await _context.Eventos.FindAsync(id);
 
@@ -45,9 +45,9 @@ namespace proyectoFinal.Controllers
         // PUT: api/Evento/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvento(string id, Evento evento)
+        public async Task<IActionResult> PutEvento(int id, Evento evento)
         {
-            if (id != evento.evento_id)
+            if (id != evento.eventoId)
             {
                 return BadRequest();
             }
@@ -81,12 +81,12 @@ namespace proyectoFinal.Controllers
             _context.Eventos.Add(evento);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEvento", new { id = evento.evento_id }, evento);
+            return CreatedAtAction("GetEvento", new { id = evento.eventoId }, evento);
         }
 
         // DELETE: api/Evento/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEvento(string id)
+        public async Task<IActionResult> DeleteEvento(int id)
         {
             var evento = await _context.Eventos.FindAsync(id);
             if (evento == null)
@@ -100,9 +100,9 @@ namespace proyectoFinal.Controllers
             return NoContent();
         }
 
-        private bool EventoExists(string id)
+        private bool EventoExists(int id)
         {
-            return _context.Eventos.Any(e => e.evento_id == id);
+            return _context.Eventos.Any(e => e.eventoId == id);
         }
     }
 }

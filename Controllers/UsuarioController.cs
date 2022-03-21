@@ -47,7 +47,7 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(string id, Usuario usuario)
         {
-            if (id != usuario.usuario_id)
+            if (id != usuario.usuarioId)
             {
                 return BadRequest();
             }
@@ -85,7 +85,7 @@ namespace proyectoFinal.Controllers
             }
             catch (DbUpdateException)
             {
-                if (UsuarioExists(usuario.usuario_id))
+                if (UsuarioExists(usuario.usuarioId))
                 {
                     return Conflict();
                 }
@@ -95,7 +95,7 @@ namespace proyectoFinal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUsuario", new { id = usuario.usuario_id }, usuario);
+            return CreatedAtAction("GetUsuario", new { id = usuario.usuarioId }, usuario);
         }
 
         // DELETE: api/Usuario/5
@@ -116,7 +116,7 @@ namespace proyectoFinal.Controllers
 
         private bool UsuarioExists(string id)
         {
-            return _context.Usuarios.Any(e => e.usuario_id == id);
+            return _context.Usuarios.Any(e => e.usuarioId == id);
         }
     }
 }

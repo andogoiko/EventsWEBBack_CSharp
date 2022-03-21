@@ -47,7 +47,7 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategoria(int id, Categoria categoria)
         {
-            if (id != categoria.categoria_id)
+            if (id != categoria.categoriaId)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace proyectoFinal.Controllers
             _context.Categorias.Add(categoria);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategoria", new { id = categoria.categoria_id }, categoria);
+            return CreatedAtAction("GetCategoria", new { id = categoria.categoriaId }, categoria);
         }
 
         // DELETE: api/Categoria/5
@@ -102,7 +102,7 @@ namespace proyectoFinal.Controllers
 
         private bool CategoriaExists(int id)
         {
-            return _context.Categorias.Any(e => e.categoria_id == id);
+            return _context.Categorias.Any(e => e.categoriaId == id);
         }
     }
 }

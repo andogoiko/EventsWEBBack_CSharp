@@ -12,18 +12,18 @@ namespace proyectoFinal.Models
         //CAMPOS
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int comentario_id { get; set; }
+        public int comentarioId { get; set; }
         [Required]
         public string comentario_text { get; set; }
         [Required]
         [ForeignKey("Evento")]
-        public string evento_id { get; set; }
+        public int eventoId { get; set; }
         [Required]
         [ForeignKey("Categoria")]
-        public string categoria_id { get; set; }
+        public string categoriaId { get; set; }
         [Required]
         [ForeignKey("Usuario")]
-        public string usuario_id { get; set; }
+        public string usuarioId { get; set; }
         [Required]
         public int fecha_comentario { get; set; }
 

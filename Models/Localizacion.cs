@@ -14,7 +14,7 @@ namespace proyectoFinal.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int localizacion_id { get; set; }
+        public int localizacionId { get; set; }
 
         [Required]
         public string localizacion { get; set; }

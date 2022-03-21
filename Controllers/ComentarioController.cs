@@ -47,7 +47,7 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutComentario(int id, Comentario comentario)
         {
-            if (id != comentario.comentario_id)
+            if (id != comentario.comentarioId)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace proyectoFinal.Controllers
             _context.Comentarios.Add(comentario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComentario", new { id = comentario.comentario_id }, comentario);
+            return CreatedAtAction("GetComentario", new { id = comentario.comentarioId }, comentario);
         }
 
         // DELETE: api/Comentario/5
@@ -102,7 +102,7 @@ namespace proyectoFinal.Controllers
 
         private bool ComentarioExists(int id)
         {
-            return _context.Comentarios.Any(e => e.comentario_id == id);
+            return _context.Comentarios.Any(e => e.comentarioId == id);
         }
     }
 }

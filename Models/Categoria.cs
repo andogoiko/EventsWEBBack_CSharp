@@ -12,7 +12,7 @@ namespace proyectoFinal.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int categoria_id { get; set; }
+        public int categoriaId { get; set; }
         public string categoria { get; set; }
         [Required]
         public string descripcion_categoria { get; set; }

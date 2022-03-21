@@ -14,7 +14,7 @@ namespace proyectoFinal.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public string evento_id { get; set; }
+        public int eventoId { get; set; }
 
         public string evento { get; set; }
 
@@ -32,7 +32,7 @@ namespace proyectoFinal.Models
 
         [Required]
         [ForeignKey("Localizacion")]
-        public string localizacion_id { get; set; }
+        public int localizacionId { get; set; }
 
         public string descripcion { get; set; }
 
@@ -41,7 +41,7 @@ namespace proyectoFinal.Models
 
         [Required]
         [ForeignKey("Categoria")]
-        public string categoria_id { get; set; }
+        public int categoriaId { get; set; }
 
         //PROPIEDADES DE NAVEGACION
         [System.Text.Json.Serialization.JsonIgnore]

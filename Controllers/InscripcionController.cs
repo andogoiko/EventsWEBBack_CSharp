@@ -47,7 +47,7 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInscripcion(int id, Inscripcion inscripcion)
         {
-            if (id != inscripcion.inscripcion_id)
+            if (id != inscripcion.inscripcionId)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace proyectoFinal.Controllers
             _context.Inscripciones.Add(inscripcion);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInscripcion", new { id = inscripcion.inscripcion_id }, inscripcion);
+            return CreatedAtAction("GetInscripcion", new { id = inscripcion.inscripcionId }, inscripcion);
         }
 
         // DELETE: api/Inscripcion/5
@@ -102,7 +102,7 @@ namespace proyectoFinal.Controllers
 
         private bool InscripcionExists(int id)
         {
-            return _context.Inscripciones.Any(e => e.inscripcion_id == id);
+            return _context.Inscripciones.Any(e => e.inscripcionId == id);
         }
     }
 }

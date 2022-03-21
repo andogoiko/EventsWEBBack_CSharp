@@ -47,7 +47,7 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLocalizacion(int id, Localizacion localizacion)
         {
-            if (id != localizacion.localizacion_id)
+            if (id != localizacion.localizacionId)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace proyectoFinal.Controllers
             _context.Localizaciones.Add(localizacion);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocalizacion", new { id = localizacion.localizacion_id }, localizacion);
+            return CreatedAtAction("GetLocalizacion", new { id = localizacion.localizacionId }, localizacion);
         }
 
         // DELETE: api/Localizacion/5
@@ -102,7 +102,7 @@ namespace proyectoFinal.Controllers
 
         private bool LocalizacionExists(int id)
         {
-            return _context.Localizaciones.Any(e => e.localizacion_id == id);
+            return _context.Localizaciones.Any(e => e.localizacionId == id);
         }
     }
 }

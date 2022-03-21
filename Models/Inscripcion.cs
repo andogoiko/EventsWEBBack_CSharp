@@ -12,13 +12,13 @@ namespace proyectoFinal.Models
         //CAMPOS
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int inscripcion_id { get; set; }
+        public int inscripcionId { get; set; }
         [Required]
         [ForeignKey("Usuario")]
-        public string usuario_id { get; set; }
+        public string usuarioId { get; set; }
         [Required]
         [ForeignKey("Evento")]
-        public string evento_id { get; set; }
+        public int eventoId { get; set; }
 
         public int valoracion { get; set; }
 

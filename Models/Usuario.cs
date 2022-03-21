@@ -13,7 +13,7 @@ namespace proyectoFinal.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string usuario_id { get; set; }
+        public string usuarioId { get; set; }
         [Required]
         public string password { get; set; }
         [Required]
