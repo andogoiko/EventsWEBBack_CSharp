@@ -30,7 +30,7 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Usuario/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuario(string id)
+        public async Task<ActionResult<Usuario>> GetUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace proyectoFinal.Controllers
         // PUT: api/Usuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(string id, Usuario usuario)
+        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
         {
             if (id != usuario.usuarioId)
             {
@@ -79,28 +79,14 @@ namespace proyectoFinal.Controllers
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
             _context.Usuarios.Add(usuario);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (UsuarioExists(usuario.usuarioId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUsuario", new { id = usuario.usuarioId }, usuario);
         }
 
         // DELETE: api/Usuario/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(string id)
+        public async Task<IActionResult> DeleteUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
@@ -114,7 +100,7 @@ namespace proyectoFinal.Controllers
             return NoContent();
         }
 
-        private bool UsuarioExists(string id)
+        private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.usuarioId == id);
         }

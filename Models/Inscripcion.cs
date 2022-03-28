@@ -15,7 +15,7 @@ namespace proyectoFinal.Models
         public int inscripcionId { get; set; }
         [Required]
         [ForeignKey("Usuario")]
-        public string usuarioId { get; set; }
+        public int usuarioId { get; set; }
         [Required]
         [ForeignKey("Evento")]
         public int eventoId { get; set; }

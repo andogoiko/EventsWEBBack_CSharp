@@ -39,7 +39,9 @@ namespace proyectoFinal.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    usuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    usuarioId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -95,8 +97,8 @@ namespace proyectoFinal.Migrations
                     comentario_text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     eventoId = table.Column<int>(type: "int", nullable: false),
                     categoriaId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    usuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    fecha_comentario = table.Column<int>(type: "int", nullable: false)
+                    usuarioId = table.Column<int>(type: "int", nullable: false),
+                    fecha_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,7 +123,7 @@ namespace proyectoFinal.Migrations
                 {
                     inscripcionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    usuarioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    usuarioId = table.Column<int>(type: "int", nullable: false),
                     eventoId = table.Column<int>(type: "int", nullable: false),
                     valoracion = table.Column<int>(type: "int", nullable: false)
                 },
@@ -171,6 +173,12 @@ namespace proyectoFinal.Migrations
                 name: "IX_Inscripciones_usuarioId",
                 table: "Inscripciones",
                 column: "usuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_usuarioId",
+                table: "Usuarios",
+                column: "usuarioId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

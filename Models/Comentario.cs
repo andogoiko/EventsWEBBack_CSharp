@@ -23,9 +23,9 @@ namespace proyectoFinal.Models
         public string categoriaId { get; set; }
         [Required]
         [ForeignKey("Usuario")]
-        public string usuarioId { get; set; }
+        public int usuarioId { get; set; }
         [Required]
-        public int fecha_comentario { get; set; }
+        public string fecha_comentario { get; set; }
 
         //PROPIEDADES DE NAVEGACION
 

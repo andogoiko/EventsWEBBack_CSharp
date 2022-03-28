@@ -55,12 +55,12 @@ namespace proyectoFinal.Migrations
                     b.Property<int>("eventoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("fecha_comentario")
-                        .HasColumnType("int");
-
-                    b.Property<string>("usuarioId")
+                    b.Property<string>("fecha_comentario")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("usuarioId")
+                        .HasColumnType("int");
 
                     b.HasKey("comentarioId");
 
@@ -129,9 +129,8 @@ namespace proyectoFinal.Migrations
                     b.Property<int>("eventoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("usuarioId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("usuarioId")
+                        .HasColumnType("int");
 
                     b.Property<int>("valoracion")
                         .HasColumnType("int");
@@ -169,8 +168,10 @@ namespace proyectoFinal.Migrations
 
             modelBuilder.Entity("proyectoFinal.Models.Usuario", b =>
                 {
-                    b.Property<string>("usuarioId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("usuarioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("apellido")
                         .IsRequired()
@@ -197,7 +198,14 @@ namespace proyectoFinal.Migrations
                     b.Property<string>("telefono")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("usuarioId");
+
+                    b.HasIndex("usuarioId")
+                        .IsUnique();
 
                     b.ToTable("Usuarios");
                 });

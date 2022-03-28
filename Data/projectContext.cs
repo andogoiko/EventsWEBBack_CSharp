@@ -17,6 +17,13 @@ namespace proyectoFinal.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Usuario>()
+                .HasIndex(u => u.usuarioId)
+                .IsUnique();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer(connString);
         public DbSet<Usuario> Usuarios { get; set; }
