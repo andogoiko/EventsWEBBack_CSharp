@@ -103,6 +103,9 @@ namespace proyectoFinal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("imagen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("localizacionId")
                         .HasColumnType("int");
 
@@ -172,6 +175,11 @@ namespace proyectoFinal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<bool>("administrator")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("apellido")
                         .IsRequired()

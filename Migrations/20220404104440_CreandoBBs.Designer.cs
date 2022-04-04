@@ -9,7 +9,7 @@ using proyectoFinal.Data;
 namespace proyectoFinal.Migrations
 {
     [DbContext(typeof(projectContext))]
-    [Migration("20220328080242_CreandoBBs")]
+    [Migration("20220404104440_CreandoBBs")]
     partial class CreandoBBs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,9 @@ namespace proyectoFinal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("imagen")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("localizacionId")
                         .HasColumnType("int");
 
@@ -174,6 +177,11 @@ namespace proyectoFinal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<bool>("administrator")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("apellido")
                         .IsRequired()

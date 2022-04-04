@@ -18,6 +18,8 @@ namespace proyectoFinal.Models
 
         public string evento { get; set; }
 
+        public string imagen { get; set; }
+
         [Required]
         public string fecha_inic { get; set; }
 

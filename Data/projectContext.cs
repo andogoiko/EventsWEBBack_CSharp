@@ -22,6 +22,10 @@ namespace proyectoFinal.Data
             builder.Entity<Usuario>()
                 .HasIndex(u => u.usuarioId)
                 .IsUnique();
+
+            builder.Entity<Usuario>()
+            .Property(us => us.administrator)
+            .HasDefaultValue(false);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

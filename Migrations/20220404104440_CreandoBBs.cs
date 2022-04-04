@@ -44,6 +44,7 @@ namespace proyectoFinal.Migrations
                     username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    administrator = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -62,6 +63,7 @@ namespace proyectoFinal.Migrations
                     eventoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     evento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_inic = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     fecha_fin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     hora_inic = table.Column<string>(type: "nvarchar(max)", nullable: false),

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,6 +22,9 @@ namespace proyectoFinal.Models
         public string password { get; set; }
         [Required]
         public string email { get; set; }
+
+        public bool administrator { get; set; }
+
         [Required]
         public string nombre { get; set; }
         [Required]
