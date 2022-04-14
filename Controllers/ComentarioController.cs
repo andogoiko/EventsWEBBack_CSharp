@@ -42,6 +42,15 @@ namespace proyectoFinal.Controllers
             return comentario;
         }
 
+        // GET: api/Comentario/eventoId
+        [HttpGet("evento/{id}")]
+        public async Task<List<Comentario>> GetComentariosEvento(int id)
+        {
+            List<Comentario> comentarios = await _context.Comentarios.Where(w=>w.eventoId==id).Select(s=>s).ToListAsync();
+
+            return comentarios;
+        }
+
         // PUT: api/Comentario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

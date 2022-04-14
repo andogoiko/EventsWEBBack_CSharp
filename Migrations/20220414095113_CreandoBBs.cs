@@ -62,7 +62,7 @@ namespace proyectoFinal.Migrations
                 {
                     eventoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    evento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    evento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     imagen = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_inic = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     fecha_fin = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -70,6 +70,8 @@ namespace proyectoFinal.Migrations
                     hora_fin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     localizacionId = table.Column<int>(type: "int", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    aforo_max = table.Column<int>(type: "int", nullable: false),
+                    popularidad = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     precio = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     categoriaId = table.Column<int>(type: "int", nullable: false)
                 },

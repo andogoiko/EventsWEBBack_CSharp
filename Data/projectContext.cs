@@ -26,6 +26,10 @@ namespace proyectoFinal.Data
             builder.Entity<Usuario>()
             .Property(us => us.administrator)
             .HasDefaultValue(false);
+
+            builder.Entity<Evento>()
+            .Property(cu => cu.popularidad)
+            .HasDefaultValue(0);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

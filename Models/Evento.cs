@@ -16,6 +16,7 @@ namespace proyectoFinal.Models
 
         public int eventoId { get; set; }
 
+        [Required]
         public string evento { get; set; }
 
         public string imagen { get; set; }
@@ -37,6 +38,11 @@ namespace proyectoFinal.Models
         public int localizacionId { get; set; }
 
         public string descripcion { get; set; }
+
+        [Required]
+        public int aforo_max { get; set; }
+
+        public int popularidad { get; set; }
 
         [Required]
         public string precio { get; set; }
