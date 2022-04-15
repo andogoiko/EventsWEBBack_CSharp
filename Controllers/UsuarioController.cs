@@ -28,6 +28,20 @@ namespace proyectoFinal.Controllers
             return await _context.Usuarios.ToListAsync();
         }
 
+        // GET: api/Usuario/username/password
+        [HttpGet("{username}/{password}")]
+        public  ActionResult<List<Usuario>> GetIniciarSesion(string username, string password)
+        {
+            var usuario =  _context.Usuarios.Where(usuario => usuario.username.Equals(username) && usuario.password.Equals(password)).ToList();
+
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            return usuario;
+        }
+
         // GET: api/Usuario/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> GetUsuario(int id)
