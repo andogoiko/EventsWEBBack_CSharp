@@ -20,7 +20,7 @@ namespace proyectoFinal.Models
         public int eventoId { get; set; }
         [Required]
         [ForeignKey("Categoria")]
-        public string categoriaId { get; set; }
+        public int categoriaId { get; set; }
         [Required]
         [ForeignKey("Usuario")]
         public int usuarioId { get; set; }

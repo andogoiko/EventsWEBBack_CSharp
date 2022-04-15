@@ -9,7 +9,7 @@ using proyectoFinal.Data;
 namespace proyectoFinal.Migrations
 {
     [DbContext(typeof(projectContext))]
-    [Migration("20220414095113_CreandoBBs")]
+    [Migration("20220415104925_CreandoBBs")]
     partial class CreandoBBs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,9 +46,8 @@ namespace proyectoFinal.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("categoriaId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("categoriaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("comentario_text")
                         .IsRequired()

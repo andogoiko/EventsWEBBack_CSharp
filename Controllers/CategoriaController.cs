@@ -20,7 +20,7 @@ namespace proyectoFinal.Controllers
         {
             _context = context;
         }
-
+        
         // GET: api/Categoria
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
