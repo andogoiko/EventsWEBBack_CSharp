@@ -42,6 +42,14 @@ namespace proyectoFinal.Controllers
             return comentario;
         }
 
+            // GET: api/Comentario/5
+        [HttpGet("Usuario/{id}")]
+        public async  Task<List<Comentario>> GetComentariosDeUsuario(int id)
+        {
+            var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
+            return comentarios;
+        }
+
         // GET: api/Comentario/eventoId
         [HttpGet("evento/{id}")]
         public async Task<List<Comentario>> GetComentariosEvento(int id)

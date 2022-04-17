@@ -41,7 +41,6 @@ namespace proyectoFinal.Controllers
 
             return inscripcion;
         }
-
         // GET: api/Inscripcion/Usuario/5
         [HttpGet("Usuario/{id}")]
         public async Task<List<Inscripcion>> GetInscripcionesUsuario(int id)
