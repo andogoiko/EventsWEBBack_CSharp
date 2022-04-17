@@ -56,6 +56,14 @@ namespace proyectoFinal.Controllers
             return usuario;
         }
 
+        // GET: api/Comentario/Usuario/5
+        [HttpGet("Usuario/{id}")]
+        public async  Task<List<Comentario>> GetComentariosDeUsuario(int id)
+        {
+            var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
+            return comentarios;
+        } 
+
         // PUT: api/Usuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

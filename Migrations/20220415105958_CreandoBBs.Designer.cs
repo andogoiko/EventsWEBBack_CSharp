@@ -9,7 +9,7 @@ using proyectoFinal.Data;
 namespace proyectoFinal.Migrations
 {
     [DbContext(typeof(projectContext))]
-    [Migration("20220415104925_CreandoBBs")]
+    [Migration("20220415105958_CreandoBBs")]
     partial class CreandoBBs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

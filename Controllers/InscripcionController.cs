@@ -42,6 +42,15 @@ namespace proyectoFinal.Controllers
             return inscripcion;
         }
 
+        // GET: api/Inscripcion/Usuario/5
+        [HttpGet("Usuario/{id}")]
+        public async Task<List<Inscripcion>> GetInscripcionesUsuario(int id)
+        {
+            var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId==id).ToListAsync();
+
+            return inscripciones;
+        }
+
         // PUT: api/Inscripcion/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
