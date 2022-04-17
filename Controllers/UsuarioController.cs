@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using proyectoFinal.Data;
 using proyectoFinal.Models;
+using proyectoFinal.Servicios;
 
 namespace proyectoFinal.Controllers
 {
@@ -15,6 +16,7 @@ namespace proyectoFinal.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly projectContext _context;
+        private projectContext _userService;
 
         public UsuarioController(projectContext context)
         {
@@ -97,6 +99,22 @@ namespace proyectoFinal.Controllers
 
             return CreatedAtAction("GetUsuario", new { id = usuario.usuarioId }, usuario);
         }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthRequest user)
+        {
+            Console.WriteLine(user);
+            var response = _context.Authenticate(user);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
+        }
+
+      
+
 
         // DELETE: api/Usuario/5
         [HttpDelete("{id}")]
