@@ -42,7 +42,7 @@ namespace proyectoFinal.Models
         [Required]
         public int aforo_max { get; set; }
 
-        public int popularidad { get; set; }
+        public double popularidad { get; set; }
 
         [Required]
         public string precio { get; set; }

@@ -58,6 +58,10 @@ namespace proyectoFinal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("hora_comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("usuarioId")
                         .HasColumnType("int");
 
@@ -112,10 +116,10 @@ namespace proyectoFinal.Migrations
                     b.Property<int>("localizacionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("popularidad")
+                    b.Property<double>("popularidad")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<string>("precio")
                         .IsRequired()
@@ -148,9 +152,10 @@ namespace proyectoFinal.Migrations
 
                     b.HasKey("inscripcionId");
 
-                    b.HasIndex("eventoId");
-
                     b.HasIndex("usuarioId");
+
+                    b.HasIndex("eventoId", "usuarioId")
+                        .IsUnique();
 
                     b.ToTable("Inscripciones");
                 });
@@ -198,7 +203,7 @@ namespace proyectoFinal.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("imagen")
                         .HasColumnType("nvarchar(max)");
@@ -216,11 +221,14 @@ namespace proyectoFinal.Migrations
 
                     b.Property<string>("username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("usuarioId");
 
-                    b.HasIndex("usuarioId")
+                    b.HasIndex("email")
+                        .IsUnique();
+
+                    b.HasIndex("username")
                         .IsUnique();
 
                     b.ToTable("Usuarios");

@@ -41,9 +41,9 @@ namespace proyectoFinal.Migrations
                 {
                     usuarioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    username = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     administrator = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -71,7 +71,7 @@ namespace proyectoFinal.Migrations
                     localizacionId = table.Column<int>(type: "int", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     aforo_max = table.Column<int>(type: "int", nullable: false),
-                    popularidad = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    popularidad = table.Column<double>(type: "float", nullable: false, defaultValue: 0.0),
                     precio = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     categoriaId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -102,7 +102,8 @@ namespace proyectoFinal.Migrations
                     eventoId = table.Column<int>(type: "int", nullable: false),
                     categoriaId = table.Column<int>(type: "int", nullable: false),
                     usuarioId = table.Column<int>(type: "int", nullable: false),
-                    fecha_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    fecha_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    hora_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,9 +170,10 @@ namespace proyectoFinal.Migrations
                 column: "localizacionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inscripciones_eventoId",
+                name: "IX_Inscripciones_eventoId_usuarioId",
                 table: "Inscripciones",
-                column: "eventoId");
+                columns: new[] { "eventoId", "usuarioId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Inscripciones_usuarioId",
@@ -179,9 +181,15 @@ namespace proyectoFinal.Migrations
                 column: "usuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_usuarioId",
+                name: "IX_Usuarios_email",
                 table: "Usuarios",
-                column: "usuarioId",
+                column: "email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_username",
+                table: "Usuarios",
+                column: "username",
                 unique: true);
         }
 

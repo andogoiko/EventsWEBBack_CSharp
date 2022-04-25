@@ -42,7 +42,7 @@ namespace proyectoFinal.Controllers
             return comentario;
         }
 
-            // GET: api/Comentario/5
+        // GET: api/Comentario/5
         [HttpGet("Usuario/{id}")]
         public async  Task<List<Comentario>> GetComentariosDeUsuario(int id)
         {

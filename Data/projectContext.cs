@@ -83,8 +83,16 @@ namespace proyectoFinal.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Usuario>()
-                .HasIndex(u => u.usuarioId)
+                .HasIndex(u => u.username)
                 .IsUnique();
+
+            builder.Entity<Usuario>()
+                .HasIndex(u => u.email)
+                .IsUnique();
+
+            builder.Entity<Inscripcion>()
+            .HasIndex(i => new {i.eventoId, i.usuarioId})
+            .IsUnique();
 
             builder.Entity<Usuario>()
             .Property(us => us.administrator)

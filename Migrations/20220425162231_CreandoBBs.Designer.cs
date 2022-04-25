@@ -9,7 +9,7 @@ using proyectoFinal.Data;
 namespace proyectoFinal.Migrations
 {
     [DbContext(typeof(projectContext))]
-    [Migration("20220415105958_CreandoBBs")]
+    [Migration("20220425162231_CreandoBBs")]
     partial class CreandoBBs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,10 @@ namespace proyectoFinal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("fecha_comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("hora_comentario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -114,10 +118,10 @@ namespace proyectoFinal.Migrations
                     b.Property<int>("localizacionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("popularidad")
+                    b.Property<double>("popularidad")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<string>("precio")
                         .IsRequired()
@@ -150,9 +154,10 @@ namespace proyectoFinal.Migrations
 
                     b.HasKey("inscripcionId");
 
-                    b.HasIndex("eventoId");
-
                     b.HasIndex("usuarioId");
+
+                    b.HasIndex("eventoId", "usuarioId")
+                        .IsUnique();
 
                     b.ToTable("Inscripciones");
                 });
@@ -200,7 +205,7 @@ namespace proyectoFinal.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("imagen")
                         .HasColumnType("nvarchar(max)");
@@ -218,11 +223,14 @@ namespace proyectoFinal.Migrations
 
                     b.Property<string>("username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("usuarioId");
 
-                    b.HasIndex("usuarioId")
+                    b.HasIndex("email")
+                        .IsUnique();
+
+                    b.HasIndex("username")
                         .IsUnique();
 
                     b.ToTable("Usuarios");

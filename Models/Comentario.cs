@@ -27,6 +27,9 @@ namespace proyectoFinal.Models
         [Required]
         public string fecha_comentario { get; set; }
 
+        [Required]
+        public string hora_comentario { get; set; }
+
         //PROPIEDADES DE NAVEGACION
 
         [System.Text.Json.Serialization.JsonIgnore]
