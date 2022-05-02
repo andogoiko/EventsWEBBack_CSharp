@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using proyectoFinal.Data;
 using proyectoFinal.Models;
+using System.Globalization;
 
 namespace proyectoFinal.Controllers
 {
@@ -25,7 +26,9 @@ namespace proyectoFinal.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Comentario>>> GetComentarios()
         {
-            return await _context.Comentarios.ToListAsync();
+            return await _context.Comentarios
+            .OrderByDescending(c => c.comentarioId)
+            .ToListAsync();
         }
 
         // GET: api/Comentario/5
@@ -44,9 +47,12 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Comentario/5
         [HttpGet("Usuario/{id}")]
-        public async  Task<List<Comentario>> GetComentariosDeUsuario(int id)
+        public async Task<List<Comentario>> GetComentariosDeUsuario(int id)
         {
-            var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
+            var comentarios = await _context.Comentarios
+                .Where(w => w.usuarioId == id)
+                .OrderByDescending(c => c.comentarioId)
+                .ToListAsync();
             return comentarios;
         }
 
@@ -54,7 +60,11 @@ namespace proyectoFinal.Controllers
         [HttpGet("evento/{id}")]
         public async Task<IEnumerable<dynamic>> GetComentariosEvento(int id)
         {
-            var comentarios = await _context.Comentarios.Where(w=>w.eventoId==id).Select(l=> new {l.comentarioId, l.usuarioId, l.fecha_comentario, l.comentario_text, l.usuario.username}).ToListAsync();
+            var comentarios = await _context.Comentarios
+                                  .Where(w => w.eventoId == id)
+                                  .Select(l => new { l.comentarioId, l.usuarioId, l.fecha_comentario, l.hora_comentario, l.comentario_text, l.usuario.username })
+                                  .OrderByDescending(c => c.comentarioId)
+                                  .ToListAsync();
 
             return comentarios;
         }

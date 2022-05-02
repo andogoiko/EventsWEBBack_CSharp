@@ -17,10 +17,10 @@ namespace proyectoFinal.Data
     {
         public static string connString { get; private set; } = $"Server=185.60.40.210\\SQLEXPRESS,58015;Database=proyecto_eventos;User Id=sa;Password=Pa88word";
         private readonly AppSettings _appSettings;
-        public projectContext(IOptions<AppSettings> appSettings,DbContextOptions<projectContext> options)
+        public projectContext(IOptions<AppSettings> appSettings, DbContextOptions<projectContext> options)
             : base(options)
         {
-              _appSettings = appSettings.Value;
+            _appSettings = appSettings.Value;
         }
 
         public AuthResponse Authenticate(AuthRequest user)
@@ -38,7 +38,8 @@ namespace proyectoFinal.Data
             return new AuthResponse
             {
                 usuarioId = user1.usuarioId,
-                username =user1.username,
+                username = user1.username,
+                admin = user1.administrator,
                 nombre = user1.nombre,
                 apellido = user1.apellido,
                 email = user1.email,
@@ -67,7 +68,7 @@ namespace proyectoFinal.Data
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-              
+
 
                 Expires = DateTime.UtcNow.AddDays(dias),
                 SigningCredentials = new SigningCredentials(
@@ -92,7 +93,7 @@ namespace proyectoFinal.Data
                 .IsUnique();
 
             builder.Entity<Inscripcion>()
-            .HasIndex(i => new {i.eventoId, i.usuarioId})
+            .HasIndex(i => new { i.eventoId, i.usuarioId })
             .IsUnique();
 
             builder.Entity<Usuario>()
