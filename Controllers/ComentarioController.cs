@@ -52,9 +52,9 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Comentario/eventoId
         [HttpGet("evento/{id}")]
-        public async Task<List<Comentario>> GetComentariosEvento(int id)
+        public async Task<IEnumerable<dynamic>> GetComentariosEvento(int id)
         {
-            List<Comentario> comentarios = await _context.Comentarios.Where(w=>w.eventoId==id).Select(s=>s).ToListAsync();
+            var comentarios = await _context.Comentarios.Where(w=>w.eventoId==id).Select(l=> new {l.comentarioId, l.usuarioId, l.fecha_comentario, l.comentario_text, l.usuario.username}).ToListAsync();
 
             return comentarios;
         }

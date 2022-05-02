@@ -34,6 +34,7 @@ namespace proyectoFinal.Controllers
         {
             var evento = await _context.Eventos.FindAsync(id);
 
+
             if (evento == null)
             {
                 return NotFound();

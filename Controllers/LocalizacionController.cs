@@ -42,6 +42,14 @@ namespace proyectoFinal.Controllers
             return localizacion;
         }
 
+       [HttpGet("evento/{id}")]
+        public async Task<IEnumerable<dynamic>> GetLocalizacionDeEvento(int id)
+        {
+           // var localizacion = await _context.Eventos.Where(w=>w.eventoId==id).SelectMany( s=>_context.Localizaciones ,(evento,localizacion)=>new {localizacion.latitud,localizacion.longitud}).ToListAsync();
+            var localizacion = await _context.Eventos.Where(w=>w.eventoId==id).Select(s=> new {s.localizacion.latitud,s.localizacion.longitud , s.localizacion.localizacion}).ToListAsync();
+            return localizacion;
+        }
+
         // PUT: api/Localizacion/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

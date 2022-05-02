@@ -38,6 +38,7 @@ namespace proyectoFinal.Data
             return new AuthResponse
             {
                 usuarioId = user1.usuarioId,
+                username =user1.username,
                 nombre = user1.nombre,
                 apellido = user1.apellido,
                 email = user1.email,

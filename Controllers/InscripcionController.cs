@@ -41,11 +41,23 @@ namespace proyectoFinal.Controllers
 
             return inscripcion;
         }
+
+           // GET: api/Inscripcion/evento/5
+        [HttpGet("evento/{id}")]
+        public async Task<IEnumerable<dynamic>> GetInscripcionesEvento(int id)
+        {
+            var inscripcion = await _context.Inscripciones.Where(w=>w.eventoId==id).Select(s=> new {s.usuario.username}).ToListAsync();
+
+
+            return inscripcion;
+        }
+
+
         // GET: api/Inscripcion/Usuario/5
         [HttpGet("Usuario/{id}")]
-        public async Task<List<Inscripcion>> GetInscripcionesUsuario(int id)
+        public async Task<IEnumerable<dynamic>> GetInscripcionesUsuario(int id)
         {
-            var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId==id).ToListAsync();
+            var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId==id).Select(s=>new {s,s.evento.evento}).ToListAsync();
 
             return inscripciones;
         }
