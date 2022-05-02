@@ -189,6 +189,9 @@ namespace proyectoFinal.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("about_me")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("administrator")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")

@@ -29,6 +29,7 @@ namespace proyectoFinal.Models
         public string nombre { get; set; }
         [Required]
         public string apellido { get; set; }
+        public string about_me { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
         public string imagen { get; set; }

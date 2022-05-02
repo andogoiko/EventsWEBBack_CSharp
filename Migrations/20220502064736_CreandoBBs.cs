@@ -47,6 +47,7 @@ namespace proyectoFinal.Migrations
                     administrator = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    about_me = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     imagen = table.Column<string>(type: "nvarchar(max)", nullable: true)
