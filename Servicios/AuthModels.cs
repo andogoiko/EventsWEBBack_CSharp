@@ -27,6 +27,7 @@ namespace proyectoFinal.Servicios
         public string email { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
+        public string imagen { get; set; }
         public string Token { get; set; }
         public System.DateTime ValidTo { get; set; }
 

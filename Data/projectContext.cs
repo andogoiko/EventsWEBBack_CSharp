@@ -47,6 +47,7 @@ namespace proyectoFinal.Data
                 direccion = user1.direccion,
                 telefono = user1.telefono,
                 about_me = user1.about_me,
+                imagen = user1.imagen,
                 Token = token,
                 ValidTo = validTo
             };
