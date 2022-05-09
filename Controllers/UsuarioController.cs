@@ -17,12 +17,12 @@ namespace proyectoFinal.Controllers
     {
         private readonly projectContext _context;
         private projectContext _userService;
-
+        
         public UsuarioController(projectContext context)
         {
             _context = context;
         }
-
+        
         // GET: api/Usuario
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
@@ -65,7 +65,7 @@ namespace proyectoFinal.Controllers
             var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
             return comentarios;
         } 
-
+        
         // PUT: api/Usuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

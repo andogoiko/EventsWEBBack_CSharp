@@ -47,10 +47,11 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Comentario/5
         [HttpGet("Usuario/{id}")]
-        public async Task<List<Comentario>> GetComentariosDeUsuario(int id)
+        public async Task<IEnumerable<dynamic>> GetComentariosDeUsuario(int id)
         {
             var comentarios = await _context.Comentarios
                 .Where(w => w.usuarioId == id)
+                 .Select(l => new { l.comentarioId, l.usuarioId, l.fecha_comentario, l.hora_comentario, l.comentario_text, l.usuario.username })
                 .OrderByDescending(c => c.comentarioId)
                 .ToListAsync();
             return comentarios;
