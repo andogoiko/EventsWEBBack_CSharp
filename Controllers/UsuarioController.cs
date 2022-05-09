@@ -71,6 +71,8 @@ namespace proyectoFinal.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
         {
+                Console.Write(usuario.ToString());
+
             if (id != usuario.usuarioId)
             {
                 return BadRequest();

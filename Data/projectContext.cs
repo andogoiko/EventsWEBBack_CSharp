@@ -39,10 +39,14 @@ namespace proyectoFinal.Data
             {
                 usuarioId = user1.usuarioId,
                 username = user1.username,
+                password = user1.password,
                 admin = user1.administrator,
                 nombre = user1.nombre,
                 apellido = user1.apellido,
                 email = user1.email,
+                direccion = user1.direccion,
+                telefono = user1.telefono,
+                about_me = user1.about_me,
                 Token = token,
                 ValidTo = validTo
             };
