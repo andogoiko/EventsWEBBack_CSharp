@@ -62,6 +62,78 @@ namespace proyectoFinal.Controllers
             return inscripciones;
         }
 
+        // GET: api/Inscripcion/HypeUp/5
+        [HttpGet("HypeUp/{id}")]
+        public async Task<IActionResult> HypeUp(int id)
+        {
+            var inscripcionAsync = await _context.Inscripciones.Where(w=>w.inscripcionId==id).ToListAsync();
+
+            var eventoAsync = await _context.Eventos.Where(w=>w.eventoId==inscripcionAsync[0].eventoId).ToListAsync();
+   
+            inscripcionAsync[0].valoracion = 1;
+
+            eventoAsync[0].popularidad++;
+            
+            _context.Entry(inscripcionAsync[0]).State = EntityState.Modified;
+
+            _context.Entry(eventoAsync[0]).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!InscripcionExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            
+
+            return NoContent();
+        }
+
+        // GET: api/Inscripcion/HypeDown/5
+        [HttpGet("HypeDown/{id}")]
+        public async Task<IActionResult> HypeDown(int id)
+        {
+            var inscripcionAsync = await _context.Inscripciones.Where(w=>w.inscripcionId==id).ToListAsync();
+
+            var eventoAsync = await _context.Eventos.Where(w=>w.eventoId==inscripcionAsync[0].eventoId).ToListAsync();
+   
+            inscripcionAsync[0].valoracion = 0;
+            
+            eventoAsync[0].popularidad--;
+            
+            _context.Entry(inscripcionAsync[0]).State = EntityState.Modified;
+
+            _context.Entry(eventoAsync[0]).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!InscripcionExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            
+
+            return NoContent();
+        }
+
         // PUT: api/Inscripcion/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
