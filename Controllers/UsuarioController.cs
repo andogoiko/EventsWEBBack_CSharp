@@ -73,13 +73,40 @@ namespace proyectoFinal.Controllers
         {
 
             List<dynamic> eventosUser = new List<dynamic>();
+
+            var allInscripciones = await _context.Inscripciones.ToListAsync();
+
+            var allEventos = await _context.Eventos.ToListAsync();
+
+            var EventXInsc = allInscripciones.Join(allEventos,
+                i => i.eventoId, e => e.eventoId,
+                (i, e) => new
+                {
+                    i.inscripcionId,
+                    e.eventoId,
+                    e.evento,
+                    e.imagen,
+                    e.fecha_inic,
+                    e.fecha_fin,
+                    e.hora_inic,
+                    e.hora_fin,
+                    e.localizacionId,
+                    e.descripcion,
+                    e.aforo_max,
+                    e.popularidad,
+                    e.precio,
+                    e.categoriaId
+                }
+                    ).ToList();
+        
+
         
             var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId == id).ToListAsync();
 
             foreach (var inscripcion in inscripciones)
             {
 
-                var auxList = await _context.Eventos.Where(w=>w.eventoId == inscripcion.eventoId).ToListAsync();
+                var auxList = EventXInsc.Where(w=>w.inscripcionId == inscripcion.inscripcionId).ToList();
                 eventosUser.Add(auxList[0]);
                 
             }
