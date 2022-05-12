@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using proyectoFinal.Data;
 using proyectoFinal.Models;
 using proyectoFinal.Servicios;
+using System.Reflection;
 
 namespace proyectoFinal.Controllers
 {
@@ -65,6 +66,26 @@ namespace proyectoFinal.Controllers
             var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
             return comentarios;
         } 
+
+        // GET: api/Usuario/Eventos/5
+        [HttpGet("Eventos/{id}")]
+        public async Task<IEnumerable<dynamic>> GetEventosUsuario(int id)
+        {
+
+            List<dynamic> eventosUser = new List<dynamic>();
+        
+            var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId == id).ToListAsync();
+
+            foreach (var inscripcion in inscripciones)
+            {
+
+                var auxList = await _context.Eventos.Where(w=>w.eventoId == inscripcion.eventoId).ToListAsync();
+                eventosUser.Add(auxList[0]);
+                
+            }
+
+            return eventosUser;
+        }
         
         // PUT: api/Usuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
