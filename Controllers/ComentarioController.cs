@@ -63,7 +63,7 @@ namespace proyectoFinal.Controllers
         {
             var comentarios = await _context.Comentarios
                                   .Where(w => w.eventoId == id)
-                                  .Select(l => new { l.comentarioId, l.usuarioId, l.fecha_comentario, l.hora_comentario, l.comentario_text, l.usuario.username })
+                                  .Select(l => new { l.comentarioId, l.usuarioId, l.fecha_comentario, l.hora_comentario, l.comentario_text, l.usuario.username, l.usuario.imagen })
                                   .OrderByDescending(c => c.comentarioId)
                                   .ToListAsync();
 
