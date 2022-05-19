@@ -18,12 +18,12 @@ namespace proyectoFinal.Controllers
     {
         private readonly projectContext _context;
         private projectContext _userService;
-        
+
         public UsuarioController(projectContext context)
         {
             _context = context;
         }
-        
+
         // GET: api/Usuario
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
@@ -33,9 +33,9 @@ namespace proyectoFinal.Controllers
 
         // GET: api/Usuario/username/password
         [HttpGet("{username}/{password}")]
-        public  ActionResult<List<Usuario>> GetIniciarSesion(string username, string password)
+        public ActionResult<List<Usuario>> GetIniciarSesion(string username, string password)
         {
-            var usuario =  _context.Usuarios.Where(usuario => usuario.username.Equals(username) && usuario.password.Equals(password)).ToList();
+            var usuario = _context.Usuarios.Where(usuario => usuario.username.Equals(username) && usuario.password.Equals(password)).ToList();
 
             if (usuario == null)
             {
@@ -58,14 +58,53 @@ namespace proyectoFinal.Controllers
 
             return usuario;
         }
+        // GET: api/Usuario/5
+        [HttpGet("comprobarUsuario/{username}")]
+        public async Task<bool> ComprobarUsuario(string username)
+
+        {
+            Usuario usuario= new Usuario();
+            try
+            {
+                usuario = await _context.Usuarios.Where(w => w.username == username).FirstAsync();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                 return false;
+            }
+
+            return true;
+        }
+
+
+             [HttpGet("comprobarEmail/{email}")]
+        public async Task<bool> ComprobarEmail(string email)
+
+        {
+            Usuario usuario= new Usuario();
+            try
+            {
+                usuario = await _context.Usuarios.Where(w => w.email == email).FirstAsync();
+            }
+            catch (Exception e)
+            {
+               
+                 return false;
+            }
+
+            return true;
+        }
+
+
 
         // GET: api/Comentario/Usuario/5
         [HttpGet("Usuario/{id}")]
-        public async  Task<List<Comentario>> GetComentariosDeUsuario(int id)
+        public async Task<List<Comentario>> GetComentariosDeUsuario(int id)
         {
-            var comentarios = await _context.Comentarios.Where(w=>w.usuarioId ==id).ToListAsync();
+            var comentarios = await _context.Comentarios.Where(w => w.usuarioId == id).ToListAsync();
             return comentarios;
-        } 
+        }
 
         // GET: api/Usuario/Eventos/5
         [HttpGet("Eventos/{id}")]
@@ -98,28 +137,28 @@ namespace proyectoFinal.Controllers
                     e.categoriaId
                 }
                     ).ToList();
-        
 
-        
-            var inscripciones = await _context.Inscripciones.Where(w=>w.usuarioId == id).ToListAsync();
+
+
+            var inscripciones = await _context.Inscripciones.Where(w => w.usuarioId == id).ToListAsync();
 
             foreach (var inscripcion in inscripciones)
             {
 
-                var auxList = EventXInsc.Where(w=>w.inscripcionId == inscripcion.inscripcionId).ToList();
+                var auxList = EventXInsc.Where(w => w.inscripcionId == inscripcion.inscripcionId).ToList();
                 eventosUser.Add(auxList[0]);
-                
+
             }
 
             return eventosUser;
         }
-        
+
         // PUT: api/Usuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
         {
-                Console.Write(usuario.ToString());
+            Console.Write(usuario.ToString());
 
             if (id != usuario.usuarioId)
             {
@@ -171,7 +210,7 @@ namespace proyectoFinal.Controllers
             return Ok(response);
         }
 
-      
+
 
 
         // DELETE: api/Usuario/5

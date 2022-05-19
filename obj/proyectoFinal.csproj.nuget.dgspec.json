@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "E:\\andoitz proyecto\\endProject\\proyectoFinal.csproj": {}
+    "C:\\Users\\danie\\OneDrive\\Escritorio\\p\\endProject\\proyectoFinal.csproj": {}
   },
   "projects": {
-    "E:\\andoitz proyecto\\endProject\\proyectoFinal.csproj": {
+    "C:\\Users\\danie\\OneDrive\\Escritorio\\p\\endProject\\proyectoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\andoitz proyecto\\endProject\\proyectoFinal.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\OneDrive\\Escritorio\\p\\endProject\\proyectoFinal.csproj",
         "projectName": "proyectoFinal",
-        "projectPath": "E:\\andoitz proyecto\\endProject\\proyectoFinal.csproj",
-        "packagesPath": "C:\\Users\\Andoni\\.nuget\\packages\\",
-        "outputPath": "E:\\andoitz proyecto\\endProject\\obj\\",
+        "projectPath": "C:\\Users\\danie\\OneDrive\\Escritorio\\p\\endProject\\proyectoFinal.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danie\\OneDrive\\Escritorio\\p\\endProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Andoni\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -83,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
