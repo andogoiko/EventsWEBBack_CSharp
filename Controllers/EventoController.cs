@@ -43,6 +43,18 @@ namespace proyectoFinal.Controllers
             return evento;
         }
 
+        // GET: api/EventosPlusLoc
+        [HttpGet("EventosPlusLoc")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> GetEventosPlusLoc()
+        {
+
+            var eventos = await _context.Eventos
+                 .Select(E => new { E.eventoId, E.evento, E.imagen, E.fecha_inic, E.fecha_fin, E.hora_inic, E.hora_fin, E.localizacionId, E.localizacion.localizacion, E.descripcion, E.aforo_max, E.popularidad, E.precio, E.categoriaId })
+                 .ToListAsync();
+
+            return eventos;
+        }
+
         // PUT: api/Evento/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
