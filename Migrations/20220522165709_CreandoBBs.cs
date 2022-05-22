@@ -101,7 +101,6 @@ namespace proyectoFinal.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     comentario_text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     eventoId = table.Column<int>(type: "int", nullable: false),
-                    categoriaId = table.Column<int>(type: "int", nullable: false),
                     usuarioId = table.Column<int>(type: "int", nullable: false),
                     fecha_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     hora_comentario = table.Column<string>(type: "nvarchar(max)", nullable: false)

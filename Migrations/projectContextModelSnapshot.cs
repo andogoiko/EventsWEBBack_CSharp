@@ -44,9 +44,6 @@ namespace proyectoFinal.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("categoriaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("comentario_text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

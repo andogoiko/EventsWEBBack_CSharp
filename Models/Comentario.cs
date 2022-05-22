@@ -19,9 +19,6 @@ namespace proyectoFinal.Models
         [ForeignKey("Evento")]
         public int eventoId { get; set; }
         [Required]
-        [ForeignKey("Categoria")]
-        public int categoriaId { get; set; }
-        [Required]
         [ForeignKey("Usuario")]
         public int usuarioId { get; set; }
         [Required]
