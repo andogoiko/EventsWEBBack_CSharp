@@ -26,7 +26,7 @@ namespace proyectoFinal.Models
         public int usuarioId { get; set; }
 
         [ForeignKey("Comentario")]
-        public int respuesta { get; set; }
+        public int? respuesta { get; set; } // el ? significa k puede ser null
         
         [Required]
         public string fecha_comentario { get; set; }
