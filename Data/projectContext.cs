@@ -106,6 +106,9 @@ namespace proyectoFinal.Data
             builder.Entity<Evento>()
             .Property(cu => cu.popularidad)
             .HasDefaultValue(0);
+
+            builder.Entity<ConversacionUsuario>()
+            .HasKey(c => new { c.usuarioId, c.conversacionId });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -116,6 +119,9 @@ namespace proyectoFinal.Data
         public DbSet<Inscripcion> Inscripciones { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Localizacion> Localizaciones { get; set; }
+        public DbSet<Conversacion> Conversacion { get; set; }
+        public DbSet<ConversacionUsuario> ConversacionUsuario { get; set; }
+        public DbSet<Mensaje> Mensaje { get; set; }
 
 
 

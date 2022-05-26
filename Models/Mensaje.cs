@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,32 +7,26 @@ using System.Threading.Tasks;
 
 namespace proyectoFinal.Models
 {
-    public class Comentario
+    public class Mensaje
     {
         //CAMPOS
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int comentarioId { get; set; }
-
-        [Required]
-        public string comentario_text { get; set; }
-
-        [Required]
-        [ForeignKey("Evento")]
-        public int eventoId { get; set; }
+        public int mensajeId { get; set; }
 
         [Required]
         [ForeignKey("Usuario")]
         public int usuarioId { get; set; }
 
-        [ForeignKey("Comentario")]
-        public int respuesta { get; set; }
-        
         [Required]
-        public string fecha_comentario { get; set; }
+        [ForeignKey("Conversacion")]
+        public int conversacionId { get; set; }
 
-        [Required]
-        public string hora_comentario { get; set; }
+        public string mensajeTexto { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime fechaEnviado { set; get; }
 
         //PROPIEDADES DE NAVEGACION
 
@@ -40,6 +34,7 @@ namespace proyectoFinal.Models
         public Usuario usuario { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public Evento evento { get; set; }
+        public Conversacion conversacion { get; set; }
+
     }
 }
