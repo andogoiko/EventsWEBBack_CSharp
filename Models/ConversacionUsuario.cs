@@ -27,7 +27,7 @@ namespace proyectoFinal.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime fechaAbandono { set; get; }
+        public DateTime? fechaAbandono { set; get; }
 
         //PROPIEDADES DE NAVEGACION
 

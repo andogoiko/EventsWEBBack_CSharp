@@ -44,10 +44,10 @@ namespace proyectoFinal.Controllers
 
         // PUT: api/ConversacionUsuario/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutConversacionUsuario(int id, ConversacionUsuario conversacionUsuario)
+        [HttpPut("{usuarioId}/{conversacionId}")]
+        public async Task<IActionResult> PutConversacionUsuario(int usuarioId, int conversacionId, ConversacionUsuario conversacionUsuario)
         {
-            if (id != conversacionUsuario.usuarioId)
+            if (usuarioId != conversacionUsuario.usuarioId && conversacionId != conversacionUsuario.conversacionId)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace proyectoFinal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ConversacionUsuarioExists(id))
+                if (!ConversacionUsuarioExists(usuarioId, conversacionId))
                 {
                     return NotFound();
                 }
@@ -85,7 +85,7 @@ namespace proyectoFinal.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ConversacionUsuarioExists(conversacionUsuario.usuarioId))
+                if (ConversacionUsuarioExists(conversacionUsuario.usuarioId, conversacionUsuario.conversacionId))
                 {
                     return Conflict();
                 }
@@ -99,14 +99,18 @@ namespace proyectoFinal.Controllers
         }
 
         // DELETE: api/ConversacionUsuario/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteConversacionUsuario(int id)
+        [HttpDelete("{usuarioId}/{conversacionId}")]
+        public async Task<IActionResult> DeleteConversacionUsuario(int usuarioId, int conversacionId)
         {
-            var conversacionUsuario = await _context.ConversacionUsuario.FindAsync(id);
-            if (conversacionUsuario == null)
+            var QueryconversacionUsuario = await _context.ConversacionUsuario.Where(x => x.usuarioId == usuarioId && x.conversacionId == conversacionId).ToListAsync();
+            
+            if (!QueryconversacionUsuario.Any())
             {
                 return NotFound();
             }
+
+            var conversacionUsuario = QueryconversacionUsuario[0];
+            
 
             _context.ConversacionUsuario.Remove(conversacionUsuario);
             await _context.SaveChangesAsync();
@@ -114,9 +118,9 @@ namespace proyectoFinal.Controllers
             return NoContent();
         }
 
-        private bool ConversacionUsuarioExists(int id)
+        private bool ConversacionUsuarioExists(int usuarioId, int conversacionId)
         {
-            return _context.ConversacionUsuario.Any(e => e.usuarioId == id);
+            return _context.ConversacionUsuario.Any(e => e.usuarioId == usuarioId && e.conversacionId == conversacionId);
         }
     }
 }
